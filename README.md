@@ -1,26 +1,13 @@
-# App
+# Telebook Layout Ideas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
+UI / UX prototype demonstrating dense data layout using [Angular Material tables](https://material.angular.io/components/table/overview). 
 
-## Development server
+![table-layout](https://github.com/JaimeStill/telebook-proto/assets/14102723/98e3b646-21cd-40d6-8d82-047e86fc3243)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
+Built with the following features:
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Docker
-
-> To use the latest LTS node Docker image, specify node:lts-alpine instead of node:latest
-
-```
-docker build -t {tag} .
-
-docker run -it --rm -p 3000:80 {tag}
-```
-
+* Filtering
+* Pagination
+* Sorting
+* Sticky Header
+* Expandable detail rows
