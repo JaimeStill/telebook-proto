@@ -1,0 +1,15 @@
+div.detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    padding: 4px;
+
+    *:nth-child(even) {
+        justify-self: end;
+    }
+}
+
+
+div.background-card {
+    width: fit-content;
+}

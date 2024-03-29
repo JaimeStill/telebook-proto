@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 import { Person } from '../models';
-import { PersonTableComponent } from '../person/person-table.component';
+import { PersonTableComponent } from '../person';
 import { PersonService } from '../services';
 
 @Component({

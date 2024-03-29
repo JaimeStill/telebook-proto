@@ -6,6 +6,14 @@ import {
 } from '@angular/core';
 
 import {
+    animate,
+    state,
+    style,
+    transition,
+    trigger
+} from '@angular/animations';
+
+import {
     MatPaginator,
     MatPaginatorModule
 } from '@angular/material/paginator'
@@ -20,9 +28,12 @@ import {
     MatTableModule
 } from '@angular/material/table';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FlexModule } from '../flex';
 import { Person } from '../models';
+import { PersonCardComponent } from './person-card.component';
 
 @Component({
     selector: 'person-table',
@@ -31,15 +42,26 @@ import { Person } from '../models';
     styleUrl: 'person-table.component.scss',
     imports: [
         FlexModule,
+        MatButtonModule,
+        MatIconModule,
         MatInputModule,
         MatPaginatorModule,
         MatSortModule,
-        MatTableModule
+        MatTableModule,
+        PersonCardComponent
+    ],
+    animations: [
+        trigger('expandPerson', [
+            state('collapsed,void', style({ height: '0px', minHeight: '0' })),
+            state('expanded', style({ height: '*' })),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)'))
+        ])
     ]
 })
 export class PersonTableComponent implements AfterViewInit {
     source = new MatTableDataSource<Person>([]);
-    columns: string[] = ['image', 'title', 'lastName', 'firstName', 'jobTitle', 'organization', 'section', 'phone', 'email'];
+    columns: string[] = ['image', 'title', 'lastName', 'firstName', 'jobTitle', 'organization', 'section', 'phone', 'email', 'expand'];
+    person: Person | null = null;
 
     @ViewChild(MatPaginator) pagniator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
@@ -58,5 +80,11 @@ export class PersonTableComponent implements AfterViewInit {
             .value
             .trim()
             .toLowerCase();
+    }
+
+    selectPerson(person: Person) {
+        this.person = this.person === person
+            ? null
+            : person;
     }
 }

@@ -3,3 +3,7 @@ div.grid {
     grid-template-rows: auto minmax(0, 1fr) auto;
     gap: 8px;
 }
+
+.person-detail-row {
+    height: 0;
+}
