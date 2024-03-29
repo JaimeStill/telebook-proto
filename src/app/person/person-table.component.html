@@ -1,0 +1,116 @@
+@if (source) {
+<div class="full-height grid">
+    <div flexContainer
+         flexDirection="column"
+         flexMain="start"
+         flexCross="stretch">
+        <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input matInput
+                   (keyup)="search($event)"
+                   placeholder="Search"
+                   #input>
+        </mat-form-field>
+    </div>
+    <div class="overflow">
+        <table mat-table
+               matSort
+               [dataSource]="source">
+
+            <ng-container matColumnDef="image">
+                <th mat-header-cell
+                    *matHeaderCellDef> Image </th>
+                <td mat-cell
+                    *matCellDef="let person">
+                    <img defer
+                         [src]="person.image"
+                         [width]="80">
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="title">
+                <th mat-header-cell
+                    mat-sort-header
+                    *matHeaderCellDef> Title </th>
+                <td mat-cell
+                    *matCellDef="let person">{{person.title}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+                <th mat-header-cell
+                    mat-sort-header
+                    *matHeaderCellDef> Last Name </th>
+                <td mat-cell
+                    *matCellDef="let person">{{person.lastName}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+                <th mat-header-cell
+                    mat-sort-header
+                    *matHeaderCellDef> First Name </th>
+                <td mat-cell
+                    *matCellDef="let person">{{person.firstName}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="jobTitle">
+                <th mat-header-cell
+                    mat-sort-header
+                    *matHeaderCellDef> Job Title </th>
+                <td mat-cell
+                    *matCellDef="let person">{{person.jobTitle}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="organization">
+                <th mat-header-cell
+                    mat-sort-header
+                    *matHeaderCellDef> Organization </th>
+                <td mat-cell
+                    *matCellDef="let person">{{person.organization}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="section">
+                <th mat-header-cell
+                    mat-sort-header
+                    *matHeaderCellDef> Section </th>
+                <td mat-cell
+                    *matCellDef="let person">{{person.section}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="phone">
+                <th mat-header-cell
+                    mat-sort-header
+                    *matHeaderCellDef> Phone </th>
+                <td mat-cell
+                    *matCellDef="let person">{{person.phone}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell
+                    mat-sort-header
+                    *matHeaderCellDef> Email </th>
+                <td mat-cell
+                    *matCellDef="let person">
+                    <a target="_blank"
+                       [href]="'mailto:' + person.email">
+                        {{person.email}}
+                    </a>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row
+                *matHeaderRowDef="columns; sticky: true"></tr>
+            <tr mat-row
+                *matRowDef="let row; columns: columns;"></tr>
+
+            <tr *matNoDataRow>
+                <td colspan="9"
+                    class="mat-h3 p4 color-warn">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <mat-paginator showFirstLastButtons
+                       [pageSizeOptions]="[20, 50, 100]"></mat-paginator>
+    </div>
+</div>
+}
