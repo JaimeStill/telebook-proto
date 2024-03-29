@@ -1,3 +1,3 @@
 export const environment = {
-  api: 'https://jaimestill.github.io/telebook-proto/assets/'
+    api: 'http://localhost:3000/assets/'
 };
