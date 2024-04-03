@@ -28,6 +28,14 @@
     $disabled-button: mat.get-color-from-palette($f, disabled-button);
     $disabled-text: mat.get-color-from-palette($f, disabled-text);
 
+    a {
+        color: map-get(map-get($palette, "blue"), "color");
+    }
+
+    a:visited {
+        color: map-get(map-get($palette, "purple"), "color");
+    }
+
     .background-card {
         background-color: $card !important;
     }
