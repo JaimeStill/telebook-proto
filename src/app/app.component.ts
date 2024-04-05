@@ -10,7 +10,7 @@ import {
 
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
 import { FlexModule } from './flex';
@@ -34,9 +34,12 @@ import { FlexModule } from './flex';
 })
 export class AppComponent implements OnInit {
   constructor(
+    iconRegistry: MatIconRegistry,
     public preferences: PreferencesService,
     public themer: ThemeService
-  ) { }
+  ) {
+    iconRegistry.setDefaultFontSetClass('material-symbols-outlined');
+  }
 
   ngOnInit(): void {
       this.preferences.load();

@@ -7,9 +7,9 @@
         <button mat-icon-button
                 [ngClass]="themer.isLight ? 'color-amber' : 'color-text'"
                 (click)="themer.toggleTheme()">
-            <mat-icon *ngIf="themer.isLight">lightbulb</mat-icon>
-            <mat-icon *ngIf="!(themer.isLight)"
-                      class="material-icons-outlined">lightbulb</mat-icon>
+            <mat-icon *ngIf="themer.isLight"
+                      class="fill">lightbulb</mat-icon>
+            <mat-icon *ngIf="!(themer.isLight)">lightbulb</mat-icon>
         </button>
     </mat-toolbar>
     <div class="overflow">
