@@ -1,0 +1,36 @@
+<div class="full-height grid">
+    <div flexContainer
+         flexDirection="row"
+         flexMain="start"
+         flexCross="center"
+         flexGap="8px"
+         class="p8">
+        <mat-button-toggle-group [value]="preferences.Settings.layout"
+                                 [hideSingleSelectionIndicator]="true"
+                                 (change)="layout($event.value)">
+            <mat-button-toggle value="list">
+                <mat-icon>table_rows</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle value="grid">
+                <mat-icon>grid_on</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+        <mat-form-field flexChild
+                        subscriptSizing="dynamic"
+                        appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput
+                   (keyup)="filter($event)"
+                   placeholder="Search"
+                   #search>
+        </mat-form-field>
+    </div>
+    <div class="overflow">
+        <ng-content></ng-content>
+    </div>
+    <div>
+        <mat-paginator showFirstLastButtons
+                       [pageSizeOptions]="[20, 50, 100]"
+                       (page)="page($event)"></mat-paginator>
+    </div>
+</div>

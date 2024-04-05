@@ -1,0 +1,35 @@
+@if (source) {
+    <div class="full-height grid">
+        <div matSort
+            flexContainer
+            flexMain="space-between"
+            flexCross="center"
+            flexGap="8px"
+            class="background-card border-divider rounded p8 mx8 mb8">
+            @for (column of columns; track column[0]) {
+                <p class="m0 mat-h3"
+                [mat-sort-header]="column[0]">
+                    {{ column[1] }}
+                </p>
+            }
+        </div>
+        @if (source.connect() | async; as people) {
+            @if (people.length > 0) {
+                <div flexContainer
+                    flexWrap="wrap"
+                    flexMain="space-evenly"
+                    flexCross="start"
+                    flexGap="8px"
+                    class="overflow">
+                    @for (person of people; track person.id) {
+                        <person-card [person]="person"></person-card>
+                    }
+                </div>
+            } @else {
+                <p class="mat-h3 m8 color-warn">
+                    No data matching the filter "{{ source.filter }}"
+                </p>
+            }
+        }
+    </div>
+}

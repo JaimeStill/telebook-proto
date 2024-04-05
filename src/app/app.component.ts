@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
+import {
+    Component,
+    OnInit
+} from '@angular/core';
+
+import {
+    PreferencesService,
+    ThemeService
+} from './core';
+
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
 import { FlexModule } from './flex';
-import { ThemeService } from './core';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +26,19 @@ import { ThemeService } from './core';
     MatToolbarModule,
     RouterOutlet
   ],
+  providers: [
+    PreferencesService
+  ],
   templateUrl: 'app.component.html',
   styleUrl: 'app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(
+    public preferences: PreferencesService,
     public themer: ThemeService
   ) { }
+
+  ngOnInit(): void {
+      this.preferences.load();
+  }
 }

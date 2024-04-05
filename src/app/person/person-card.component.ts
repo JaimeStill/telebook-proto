@@ -19,6 +19,6 @@ import { Person } from '../models';
 })
 export class PersonCardComponent {
     @Input({ required: true }) person!: Person;
-    @Input() cardStyle: string = 'background-card rounded border-divider full-height m8';
-    @Input() size: number | string = 420;
+    @Input() cardStyle: string = 'background-card rounded border-divider full-height';
+    @Input() size: number | string = 600;
 }
