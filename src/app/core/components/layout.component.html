@@ -31,6 +31,7 @@
     <div>
         <mat-paginator showFirstLastButtons
                        [pageSizeOptions]="[20, 50, 100]"
+                       [pageSize]="preferences.Settings.pageSize"
                        (page)="page($event)"></mat-paginator>
     </div>
 </div>
