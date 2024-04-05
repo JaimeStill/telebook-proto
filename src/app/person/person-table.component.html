@@ -1,98 +1,113 @@
 @if (source) {
-    <table mat-table
-        matSort
-        [dataSource]="source">
+<table mat-table
+       matSort
+       [dataSource]="source">
 
-        <ng-container matColumnDef="image">
-            <th mat-header-cell
-                *matHeaderCellDef> Image </th>
-            <td mat-cell
-                *matCellDef="let row">
-                <img defer
-                    [src]="row.image"
-                    [alt]="row.image"
-                    [width]="80">
-            </td>
-        </ng-container>
+    <ng-container matColumnDef="image">
+        <th mat-header-cell
+            *matHeaderCellDef> Image </th>
+        <td mat-cell
+            *matCellDef="let row">
+            <img defer
+                 cdkOverlayOrigin
+                 #trigger="cdkOverlayOrigin"
+                 class="cursor-pointer"
+                 [src]="row.image"
+                 [alt]="row.image"
+                 [width]="80"
+                 (pointerenter)="openCard(row)"
+                 (pointerleave)="closeCard()">
+            <ng-template cdkConnectedOverlay
+                         [cdkConnectedOverlayOrigin]="trigger"
+                         [cdkConnectedOverlayOpen]="person?.id === row.id">
+                @if (person) {
+                    <div class="mat-app-background mat-elevation-z8 rounded">
+                        <person-card cardStyle="background-card border-text rounded"
+                                    [person]="person"></person-card>
+                    </div>
+                }
+            </ng-template>
+        </td>
+    </ng-container>
 
-        <ng-container matColumnDef="title">
-            <th mat-header-cell
-                mat-sort-header
-                *matHeaderCellDef> Title </th>
-            <td mat-cell
-                *matCellDef="let row">{{row.title}}</td>
-        </ng-container>
+    <ng-container matColumnDef="title">
+        <th mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef> Title </th>
+        <td mat-cell
+            *matCellDef="let row">{{row.title}}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="lastName">
-            <th mat-header-cell
-                mat-sort-header
-                *matHeaderCellDef> Last Name </th>
-            <td mat-cell
-                *matCellDef="let row">{{row.lastName}}</td>
-        </ng-container>
+    <ng-container matColumnDef="lastName">
+        <th mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef> Last Name </th>
+        <td mat-cell
+            *matCellDef="let row">{{row.lastName}}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="firstName">
-            <th mat-header-cell
-                mat-sort-header
-                *matHeaderCellDef> First Name </th>
-            <td mat-cell
-                *matCellDef="let row">{{row.firstName}}</td>
-        </ng-container>
+    <ng-container matColumnDef="firstName">
+        <th mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef> First Name </th>
+        <td mat-cell
+            *matCellDef="let row">{{row.firstName}}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="jobTitle">
-            <th mat-header-cell
-                mat-sort-header
-                *matHeaderCellDef> Job Title </th>
-            <td mat-cell
-                *matCellDef="let row">{{row.jobTitle}}</td>
-        </ng-container>
+    <ng-container matColumnDef="jobTitle">
+        <th mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef> Job Title </th>
+        <td mat-cell
+            *matCellDef="let row">{{row.jobTitle}}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="organization">
-            <th mat-header-cell
-                mat-sort-header
-                *matHeaderCellDef> Organization </th>
-            <td mat-cell
-                *matCellDef="let row">{{row.organization}}</td>
-        </ng-container>
+    <ng-container matColumnDef="organization">
+        <th mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef> Organization </th>
+        <td mat-cell
+            *matCellDef="let row">{{row.organization}}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="section">
-            <th mat-header-cell
-                mat-sort-header
-                *matHeaderCellDef> Section </th>
-            <td mat-cell
-                *matCellDef="let row">{{row.section}}</td>
-        </ng-container>
+    <ng-container matColumnDef="section">
+        <th mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef> Section </th>
+        <td mat-cell
+            *matCellDef="let row">{{row.section}}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="phone">
-            <th mat-header-cell
-                mat-sort-header
-                *matHeaderCellDef> Phone </th>
-            <td mat-cell
-                *matCellDef="let row">{{row.phone}}</td>
-        </ng-container>
+    <ng-container matColumnDef="phone">
+        <th mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef> Phone </th>
+        <td mat-cell
+            *matCellDef="let row">{{row.phone}}</td>
+    </ng-container>
 
-        <ng-container matColumnDef="email">
-            <th mat-header-cell
-                mat-sort-header
-                *matHeaderCellDef> Email </th>
-            <td mat-cell
-                *matCellDef="let row">
-                <a target="_blank"
-                [href]="'mailto:' + row.email">
-                    {{row.email}}
-                </a>
-            </td>
-        </ng-container>
+    <ng-container matColumnDef="email">
+        <th mat-header-cell
+            mat-sort-header
+            *matHeaderCellDef> Email </th>
+        <td mat-cell
+            *matCellDef="let row">
+            <a target="_blank"
+               [href]="'mailto:' + row.email">
+                {{row.email}}
+            </a>
+        </td>
+    </ng-container>
 
-        <tr mat-header-row
-            *matHeaderRowDef="columns; sticky: true"></tr>
+    <tr mat-header-row
+        *matHeaderRowDef="columns; sticky: true"></tr>
 
-        <tr mat-row
-            *matRowDef="let row; columns: columns;"></tr>
+    <tr mat-row
+        *matRowDef="let row; columns: columns;"></tr>
 
-        <tr *matNoDataRow>
-            <td colspan="9"
-                class="mat-h3 p4 color-warn">No data matching the filter "{{source.filter}}"</td>
-        </tr>
-    </table>
+    <tr *matNoDataRow>
+        <td colspan="9"
+            class="mat-h3 p4 color-warn">No data matching the filter "{{source.filter}}"</td>
+    </tr>
+</table>
 }
