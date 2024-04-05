@@ -1,11 +1,12 @@
 <div flexContainer
      flexMain="start"
      flexCross="stretch"
-     [class]="cardStyle">
+     [class]="cardStyle"
+     [style.width.px]="size">
     <img defer
          [src]="person.image"
          [alt]="person.image"
-         [width]="180">
+         [width]="180" />
     <div flexChild
          flexContainer
          flexDirection="column"
@@ -16,20 +17,41 @@
         <h2 flexChild
             flexAlignSelf="center"
             flex="0 1 auto"
-            class="mat-h2 m0">{{person.title}} {{person.value}}</h2>
+            class="mat-h2 m0">
+            {{ person.title }}
+            {{ person.value }}
+        </h2>
         <div class="detail-grid">
-            <p class="mat-body-strong m0">Job Title</p>
-            <p class="m0">{{person.jobTitle}}</p>
-            <p class="mat-body-strong m0">Organization</p>
-            <p class="m0">{{person.organization}}</p>
-            <p class="mat-body-strong m0">Section</p>
-            <p class="m0">{{person.section}}</p>
-            <p class="mat-body-strong m0">Phone</p>
-            <p class="m0">{{person.phone}}</p>
-            <p class="mat-body-strong m0">Email</p>
+            <p class="mat-body-strong m0">
+                Job Title
+            </p>
+            <p class="m0">
+                {{ person.jobTitle }}
+            </p>
+            <p class="mat-body-strong m0">
+                Organization
+            </p>
+            <p class="m0">
+                {{ person.organization }}
+            </p>
+            <p class="mat-body-strong m0">
+                Section
+            </p>
+            <p class="m0">
+                {{ person.section }}
+            </p>
+            <p class="mat-body-strong m0">
+                Phone
+            </p>
+            <p class="m0">
+                {{ person.phone }}
+            </p>
+            <p class="mat-body-strong m0">
+                Email
+            </p>
             <p class="m0">
                 <a [href]="'mailto:' + person.email">
-                    {{person.email}}
+                    {{ person.email }}
                 </a>
             </p>
         </div>

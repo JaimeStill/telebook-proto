@@ -1,5 +1,12 @@
 @if (people === null) {
     <p>Loading...</p>
 } @else {
-    <person-table [people]="people"></person-table>
+    <layout [data]="people"
+            #layout>
+        @if (preferences.Settings.layout === 'list') {
+            <person-table [source]="layout.source"></person-table>
+        } @else {
+            <person-grid [source]="layout.source"></person-grid>
+        }
+    </layout>
 }

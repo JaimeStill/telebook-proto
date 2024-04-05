@@ -3,8 +3,17 @@ import {
     OnInit
 } from '@angular/core';
 
+import {
+    LayoutComponent,
+    PreferencesService
+} from '../core';
+
+import {
+    PersonGridComponent,
+    PersonTableComponent
+} from '../person';
+
 import { Person } from '../models';
-import { PersonTableComponent } from '../person';
 import { PersonService } from '../services';
 
 @Component({
@@ -13,6 +22,8 @@ import { PersonService } from '../services';
     templateUrl: 'home.route.html',
     styleUrl: 'home.route.scss',
     imports: [
+        LayoutComponent,
+        PersonGridComponent,
         PersonTableComponent
     ],
     providers: [
@@ -23,6 +34,7 @@ export class HomeRoute implements OnInit {
     people: Person[] | null = null;
 
     constructor(
+        public preferences: PreferencesService,
         private personSvc: PersonService
     ) { }
 
