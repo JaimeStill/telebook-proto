@@ -15,8 +15,9 @@
                  [src]="row.image"
                  [alt]="row.image"
                  [width]="80"
-                 (pointerenter)="openCard(row)"
-                 (pointerleave)="closeCard()">
+                 (pointerdown)="onTap($event, row)"
+                 (pointerenter)="onEnter($event, row)"
+                 (pointerleave)="onLeave($event)">
             <ng-template cdkConnectedOverlay
                          [cdkConnectedOverlayOrigin]="trigger"
                          [cdkConnectedOverlayOpen]="person?.id === row.id">

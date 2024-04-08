@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Person } from '../models';
 import { PersonCardComponent } from './person-card.component';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 @Component({
     selector: 'person-table',
@@ -57,11 +58,39 @@ export class PersonTableComponent implements AfterViewInit {
         this.source.sort = this.sort;
     }
 
-    openCard(person: Person) {
+    private openCard(person: Person) {
         this.person = person;
     }
 
-    closeCard() {
+    private closeCard() {
         this.person = null;
+    }
+
+    onTap(event: PointerEvent, person: Person) {
+        if (event.pointerType !== 'mouse') {
+            if (this.person) {
+                if (person.id === this.person?.id) {
+                    this.closeCard()
+                } else {
+                    this.openCard(person);
+                }
+            } else {
+                this.openCard(person);
+            }
+        }
+    }
+
+    onEnter(event: PointerEvent, person: Person) {
+        if (event.pointerType === 'mouse') {
+            console.log('onEnter', event);
+            this.openCard(person);
+        }
+    }
+
+    onLeave(event: PointerEvent) {
+        if (event.pointerType === 'mouse') {
+            console.log('onLeave', event);
+            this.closeCard();
+        }
     }
 }
