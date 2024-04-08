@@ -1,3 +1,3 @@
 export const environment = {
-    api: 'https://cuddly-garbanzo-5gx47779v54f6vj-3000.app.github.dev/assets/'
+    api: 'https://shiny-bassoon-jjq4ppp9xp6h5v5w-3000.app.github.dev/assets/'
   };

@@ -3,6 +3,7 @@ import {
     Input
 } from '@angular/core';
 
+import { CommonModule } from '@angular/common';
 import { MatDivider } from '@angular/material/divider';
 import { FlexModule } from '../flex';
 import { Person } from '../models';
@@ -13,6 +14,7 @@ import { Person } from '../models';
     templateUrl: 'person-card.component.html',
     styleUrl: 'person-card.component.scss',
     imports: [
+        CommonModule,
         FlexModule,
         MatDivider
     ]
@@ -20,5 +22,4 @@ import { Person } from '../models';
 export class PersonCardComponent {
     @Input({ required: true }) person!: Person;
     @Input() cardStyle: string = 'background-card border-divider rounded';
-    @Input() size: number | string = 600;
 }

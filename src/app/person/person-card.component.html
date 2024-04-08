@@ -1,12 +1,11 @@
 <div flexContainer
      flexMain="start"
      flexCross="stretch"
-     [class]="cardStyle"
-     [style.width.px]="size">
+     class="card-base"
+     [ngClass]="cardStyle">
     <img defer
          [src]="person.image"
-         [alt]="person.image"
-         [width]="180" />
+         [alt]="person.image" />
     <div flexChild
          flexContainer
          flexDirection="column"
